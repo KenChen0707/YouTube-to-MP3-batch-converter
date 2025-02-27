@@ -1,4 +1,4 @@
-# YouTube MP3 Harvester 音樂下載工具
+# YouTube-to-MP3-batch-converter
 
 這是一個用於從 YouTube 批量下載音樂並轉換為 MP3 格式的工具。它支援並行下載多首歌曲，並自動嵌入音樂標籤和專輯封面。
 
@@ -37,8 +37,8 @@
 2. 克隆專案
 
    ```bash
-   git clone https://github.com/KenChen0707/YouTube-MP3-Harvester.git
-   cd youtube-mp3-harvester
+   git clone https://github.com/KenChen0707/YouTube-to-MP3-batch-converter.git
+   cd YouTube-to-MP3-batch-converter
    ```
 
 3. 使用 Poetry 安裝依賴
