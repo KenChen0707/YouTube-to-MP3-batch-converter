@@ -2,6 +2,7 @@ import concurrent.futures
 import json
 import os
 import time
+from datetime import datetime
 
 from yt_dlp import YoutubeDL
 
@@ -14,8 +15,11 @@ logger = setup_logger()
 current_dir = os.path.dirname(os.path.abspath(__file__))
 songs_file = os.path.join(current_dir, "songs.json")
 
-# 設定歌曲下載的資料夾路徑
-download_dir = os.path.join(os.path.expanduser("~"), "Downloads", "Music")
+# 設定歌曲下載的資料夾路徑，包含當日日期
+current_date = datetime.now().strftime("%Y%m%d")
+download_dir = os.path.join(
+    os.path.expanduser("~"), "Downloads", f"Music_{current_date}"
+)
 
 
 def measure_execution_time(func: callable) -> callable:
