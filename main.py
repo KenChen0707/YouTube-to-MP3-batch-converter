@@ -1,6 +1,7 @@
 import concurrent.futures
 import json
 import os
+import time
 
 from yt_dlp import YoutubeDL
 
@@ -15,6 +16,26 @@ songs_file = os.path.join(current_dir, "songs.json")
 
 # 設定歌曲下載的資料夾路徑
 download_dir = os.path.join(os.path.expanduser("~"), "Downloads", "Music")
+
+
+def measure_execution_time(func: callable) -> callable:
+    """計時裝飾器，用於測量函式執行時間。
+
+    Args:
+        func (callable): 要被計時的函式。
+
+    Returns:
+        callable: 包裝後的函式，會記錄執行時間。
+    """
+
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        logger.info(f"{func.__name__} 執行時間：{end_time - start_time:.2f} 秒")
+        return result
+
+    return wrapper
 
 
 def load_songs_from_json() -> list:
@@ -85,6 +106,7 @@ def download_single_song(song: dict):
         logger.error(f"下載 {search_query} 時發生錯誤: {e}")
 
 
+@measure_execution_time
 def download_songs(song_list: list, max_workers: int = 10):
     """並行下載多首歌曲。
 
