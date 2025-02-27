@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "youtube-mp3-harvester"
+name = "youtube-to-mp3-batch-converter"
 version = "0.1.0"
 description = ""
 authors = ["ProMaker <rocker896@gmail.com>"]
