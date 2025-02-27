@@ -45,7 +45,7 @@ def download_single_song(song: dict):
     """使用歌手和歌名從YouTube下載單首歌曲。
 
     Args:
-        song (dict): 包含歌曲資訊的字典，必須包含 "artist" 和 "name" 兩個鍵值。
+        song (dict): 包含歌曲資訊的字典，必須包含 "artist" 和 "name" 兩個鍵值，
             例如: {"artist": "周杰倫", "name": "稻香"}
 
     Raises:

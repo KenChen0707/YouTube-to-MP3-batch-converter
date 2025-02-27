@@ -1,0 +1,26 @@
+{
+    "Pending": {
+        "範例待處理的歌手": [
+            "範例待處理的歌曲1",
+            "範例待處理的歌曲2",
+            "範例待處理的歌曲3"
+        ],
+        "Example Pending Artist": [
+            "Example Pending Song 1",
+            "Example Pending Song 2",
+            "Example Pending Song 3"
+        ]
+    },
+    "Downloaded": {
+        "範例已下載的歌手": [
+            "範例已下載的歌曲1",
+            "範例已下載的歌曲2",
+            "範例已下載的歌曲3"
+        ],
+        "Example Downloaded Artist": [
+            "Example Downloaded Song 1",
+            "Example Downloaded Song 2",
+            "Example Downloaded Song 3"
+        ]
+    }
+}
