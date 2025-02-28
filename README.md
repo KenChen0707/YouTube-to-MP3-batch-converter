@@ -22,22 +22,43 @@
 
 1. 安裝 FFmpeg（如果尚未安裝）
 
+   ##### macOS（使用 Homebrew）
+
    ```bash
-   # macOS（使用 Homebrew）
    brew install ffmpeg
+   ```
 
-   # Ubuntu/Debian
+   ##### Ubuntu/Debian
+
+   ```bash
    sudo apt update
-   sudo apt install ffmpeg
+   ```
 
-   # Windows（使用 Chocolatey）
+   ```bash
+   sudo apt install ffmpeg
+   ```
+
+   ##### Windows
+
+   1. 使用 Chocolatey
+
+   ```bash
    choco install ffmpeg
+   ```
+
+   2. 透過以下連結下載
+
+   ```
+   https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z
    ```
 
 2. 克隆專案
 
    ```bash
    git clone https://github.com/KenChen0707/YouTube-to-MP3-batch-converter.git
+   ```
+
+   ```bash
    cd YouTube-to-MP3-batch-converter
    ```
 
