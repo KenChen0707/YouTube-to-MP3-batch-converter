@@ -1,131 +1,110 @@
 # YouTube-to-MP3-batch-converter
 
-從 YouTube 批量下載音樂並轉換為 MP3 格式的工具，使用 Python 和 yt-dlp 開發。支援並行下載多首歌曲，並自動嵌入音樂標籤和專輯封面。
+一個強大的 YouTube 音樂下載工具，支援批量下載並自動轉換為高品質 MP3。特別適合想要建立本地音樂庫的使用者。
 
-## 功能特點
+## ✨ 核心功能
 
-- 🎵 從 YouTube 批量下載音樂
-- 🔄 自動轉換為高品質 MP3 格式（256kbps）
-- 📝 自動嵌入音樂標籤資訊
+- 🎵 批量下載 YouTube 音樂
+- 🔄 自動轉換為 MP3（256kbps 高品質）
+- 🏷️ 自動嵌入音樂標籤
 - 🖼️ 自動嵌入專輯封面
-- 📊 下載進度和狀態追蹤
-- 🚀 支援並行下載，提升效率
-- 📁 自動整理下載歷史
+- ⚡ 支援並行下載（預設 10 個同時下載）
+- 📝 自動記錄下載歷史
+- 📊 即時顯示下載進度
+- 📅 依日期自動整理下載檔案
 
-## 系統需求
+## 🚀 快速開始
 
-- Python 3.12 或更新版本
-- FFmpeg（用於音訊處理）
-- Poetry（用於依賴管理）
+### 系統需求
+- Python 3.12+
+- Poetry（Python 套件管理工具）
+- FFmpeg
 
-## 安裝步驟
+### 安裝步驟
 
-1. 安裝 FFmpeg（如果尚未安裝）
+1. **安裝 Python**
+   - 從 [Python 官網](https://www.python.org/downloads/) 下載並安裝
 
-   ##### macOS（使用 Homebrew）
-
+2. **安裝 Poetry**
    ```bash
-   brew install ffmpeg
+   (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
    ```
 
-   ##### Ubuntu/Debian
-
+3. **安裝 FFmpeg**
+   - 使用 Chocolatey：
    ```bash
-   sudo apt update
-   ```
+     choco install ffmpeg
+     ```
+   - 或從 [FFmpeg 官網](https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z) 下載
 
-   ```bash
-   sudo apt install ffmpeg
-   ```
-
-   ##### Windows
-
-   1. 使用 Chocolatey
-
-   ```bash
-   choco install ffmpeg
-   ```
-
-   2. 透過以下連結下載
-
-   ```
-   https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z
-   ```
-
-2. 克隆專案
-
+4. **下載並設置專案**
+   1. 下載專案
    ```bash
    git clone https://github.com/KenChen0707/YouTube-to-MP3-batch-converter.git
    ```
 
+   2. 移動至專案資料夾
    ```bash
    cd YouTube-to-MP3-batch-converter
    ```
 
-3. 使用 Poetry 安裝依賴
-
+   3. 安裝依賴
    ```bash
    poetry install
    ```
 
-## 使用方法
+## 💡 使用方法
 
-1. 建立歌曲清單檔案
+1. **設定下載清單**
+   - 複製範例檔案：
+      ```bash
+      cp songs.example.json songs.json
+      ```
+   - 編輯 `songs.json`：
+     ```json
+     {
+         "Pending": {
+             "周杰倫": [
+                 "稻香",
+                 "告白氣球"
+             ]
+         },
+         "Downloaded": {}
+     }
+     ```
 
-   將 `songs.example.json` 複製為 `songs.json`，並編輯其中的歌曲資訊：
+2. **執行下載**
+   - 雙擊 `run.bat`
+   - 或在終端機執行：
+     ```bash
+     poetry run python main.py
+     ```
 
-   ```bash
-   cp songs.example.json songs.json
-   ```
+3. **查看結果**
+   - 下載的音樂會自動存放在 `~/Downloads/Music_YYYYMMDD/` 目錄
+   - 程式執行日誌儲存在 `logs/app.log`
 
-   `songs.json` 格式範例：
-   ```json
-   {
-       "Pending": {
-           "周杰倫": [
-               "稻香",
-               "告白氣球"
-           ]
-       },
-       "Downloaded": {}
-   }
-   ```
+## ⚙️ 進階設定
 
-2. 執行下載程式
+- **下載目錄**：預設為 `~/Downloads/Music_YYYYMMDD/`，可在 `main.py` 中修改 `download_dir` 變數
+- **並行下載數**：預設為 10，可在呼叫 `download_songs()` 時透過 `max_workers` 參數調整
+- **音訊品質**：預設 256kbps，可在 `download_single_song()` 函式中的 `ydl_opts` 修改
 
-   ```bash
-   poetry run python main.py
-   ```
+## 📝 注意事項
 
-   下載的音樂檔案將儲存在 `~/Downloads/Music` 目錄下。
+- 確保網路連線穩定
+- 預留足夠硬碟空間
+- 遵守 YouTube 服務條款
+- 尊重著作權規定
 
-## 設定說明
+## 🤝 貢獻指南
 
-- 下載目錄：預設為 `~/Downloads/Music`，可在 `main.py` 中修改 `download_dir` 變數
-- 並行下載數：預設為 10，可在呼叫 `download_songs()` 時透過 `max_workers` 參數調整
-- 音訊品質：預設為 256kbps，可在 `download_single_song()` 函式中的 `ydl_opts` 修改
+歡迎提交 Issue 或 Pull Request 來改善專案！
 
-## 日誌記錄
+## 📄 授權條款
 
-- 程式執行日誌會儲存在 `logs/app.log`
-- 使用 Rich 套件提供彩色終端輸出
-- 日誌檔案自動輪替，每個檔案最大 1MB，保留最近 5 個備份
+本專案採用 MIT 授權 - 詳見 [LICENSE](LICENSE) 檔案
 
-## 注意事項
+## 👤 作者
 
-- 請確保有足夠的硬碟空間
-- 下載速度取決於網路連線品質
-- 部分影片可能因版權限制無法下載
-- 請遵守 YouTube 的服務條款和著作權規定
-
-## 授權條款
-
-本專案採用 MIT 授權條款 - 詳見 [LICENSE](LICENSE) 檔案
-
-## 貢獻指南
-
-歡迎提交 Pull Request 或建立 Issue 來改善這個專案！
-
-## 作者
-
-ProMaker <rocker896@gmail.com> 
+ProMaker <rocker896@gmail.com>
